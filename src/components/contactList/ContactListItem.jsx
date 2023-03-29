@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const ContactListItem = ({ name, number, removeItem }) => {
   return (
     <li>
@@ -10,6 +10,12 @@ const ContactListItem = ({ name, number, removeItem }) => {
       </div>
     </li>
   );
+};
+
+ContactListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
 export default ContactListItem;

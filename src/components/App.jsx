@@ -2,7 +2,7 @@ import ContactForm from './contactForm/ContactForm';
 import ContactList from './contactList/ContactList';
 import Filter from './filter/Filter';
 import { nanoid } from 'nanoid';
-
+import css from './App.module.css';
 import React, { Component } from 'react';
 
 export class App extends Component {
@@ -29,13 +29,11 @@ export class App extends Component {
     }));
   };
 
-  addContact = evt => {
-    evt.preventDefault();
-
+  addContact = fieldResult => {
     const newContact = {
       id: nanoid(),
-      name: evt.target.elements.contactName.value.trim(),
-      number: evt.target.elements.contactPhone.value.trim(),
+      name: fieldResult.name,
+      number: fieldResult.number,
     };
 
     let presents = this.state.contacts.some(
@@ -45,12 +43,11 @@ export class App extends Component {
       this.setState(prevState => ({
         contacts: [...prevState.contacts, newContact],
       }));
-
-      evt.target.reset();
     } else {
       alert(`${newContact.name} is already in contacts`);
     }
   };
+
   removeItem = elemName => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.name !== elemName),
@@ -58,16 +55,7 @@ export class App extends Component {
   };
   render() {
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
+      <div className={css.goitTemplateMarkup}>
         <div>
           <h1>Phonebook</h1>
           <ContactForm addContact={this.addContact} />

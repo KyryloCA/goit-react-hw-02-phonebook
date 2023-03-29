@@ -1,5 +1,14 @@
 @import-normalize; /* bring in normalize.css styles */
 
+.goitTemplateMarkup {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40;
+  color: #010101;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Filter = ({ searchEngine, inputValue }) => {
   return (
@@ -12,4 +13,8 @@ const Filter = ({ searchEngine, inputValue }) => {
   );
 };
 
+Filter.propTypes = {
+  searchEngine: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
+};
 export default Filter;

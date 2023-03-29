@@ -1,8 +1,18 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const ContactForm = ({ addContact }) => {
+  const onSubmitHandler = evt => {
+    evt.preventDefault();
+    const fieldResult = {
+      name: evt.target.elements.contactName.value.trim(),
+      number: evt.target.elements.contactPhone.value.trim(),
+    };
+
+    addContact(fieldResult);
+    evt.target.reset();
+  };
   return (
-    <form onSubmit={addContact}>
+    <form onSubmit={onSubmitHandler}>
       <label htmlFor="contactName">Name</label>
       <input id="contactName" name="contactName" type="text" />
       <label htmlFor="contactPhone">Number</label>
@@ -19,5 +29,7 @@ const ContactForm = ({ addContact }) => {
     </form>
   );
 };
-
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};
 export default ContactForm;
